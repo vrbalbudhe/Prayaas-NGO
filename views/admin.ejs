@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin@terminal</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- <script type="text/javascript" src="http://www.chartjs.org/assets/Chart.js"> -->
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <style>
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-white">
+    <div class="container mx-auto p-0">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-0">
+        <!-- Left Sidebar -->
+        <div
+          class="col-span-1 md:col-span-1 h-full bg-white rounded-md shadow-md"
+        >
+          <!-- Left Sidebar Upper Section -->
+          <div class="p-4 h-60 w-full">
+            <h1 class="text-slate-800 font-bold text-sm text-center">
+              Admin Window
+            </h1>
+            <h1
+              class="text-zinc-800 md:text-md text-sm font-bold text-md text-center"
+            >
+              domain: prayaasngo@gmail.com
+            </h1>
+          </div>
+          <!-- Left Sidebar Upper Section -->
+
+          <!-- Left Sidebar Bottom Section -->
+          <div class="p-4 h-fit hidden md:block mb-20">
+            <ul class="space-y-2 text-slate-700 text-sm">
+              <li
+                class="border-b rounded-lg pl-2 border-400 cursor-pointer pt-2 pb-2 bg-indigo-100 font-bold"
+              >
+                <a href="http://localhost:8000/prayaas/admin">Dashboard</a>
+              </li>
+              <li
+                class="border-b rounded-lg pl-2 border-gray-400 cursor-pointer pt-2 pb-2 hover:bg-indigo-100 font-semibold"
+              >
+                <a href="http://localhost:8000/prayaas/usersInfo"
+                  >User Management</a
+                >
+              </li>
+              <li
+                class="border-b hover:rounded-lg pl-2 border-gray-400 cursor-pointer pt-2 pb-2 hover:bg-indigo-100 font-semibold"
+              >
+                Donation Management
+              </li>
+              <li
+                class="border-b hover:rounded-lg pl-2 border-gray-400 cursor-pointer pt-2 pb-2 hover:bg-indigo-100 font-semibold"
+              >
+                <a href="http://localhost:8000/prayaas/request_window"
+                  >Request Window</a
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Left Sidebar Bottom Section -->
+
+          <!-- Login and Logout Section -->
+          <div class="p-4 text-sm font-bold hidden md:block">
+            <ul class="space-y-2 text-slate-700">
+              <li
+                class="border-b border-gray-400 pl-2 pt-2 hover:rounded-lg hover:bg-indigo-100 pb-2"
+              >
+                <a href="http://localhost:8000/prayaas/home">Logout</a>
+              </li>
+            </ul>
+          </div>
+          <!-- Login and Logout Section -->
+        </div>
+        <!-- Left Sidebar -->
+
+        <!-- Main Window -->
+        <div
+          class="col-span-1 md:col-span-4 h-screen bg-white rounded-md shadow-md overflow-auto"
+        >
+          <!-- Top Navbar -->
+          <div
+            class="bg-white h-16 flex justify-center items-center border border-b-2"
+          >
+            <h1 class="text-slate-900 font-semibold">
+              PRAYAAS-NGO-ADMIN_TERMINAL <span>&copy;</span>2024 ALL RIGHTS
+              RESERVED
+            </h1>
+          </div>
+          <!-- Top Navbar -->
+
+          <!-- Right Bottom Section -->
+          <div class="bg-white p-4 row1cards">
+            <div
+              class="w-full gap-5 flex flex-wrap justify-center items-center"
+            >
+              <!-- Card 1 -->
+              <div
+                class="bg-slate-100 rounded-md shadow-md border md:w-3/12 w-3/12 border-slate-100 cardback p-4"
+              >
+                <h1 class="text-slate-700 font-bold text-left">
+                  Donations Received
+                </h1>
+                <h1 class="text-zinc-800 text-2xl font-bold text-left mt-2">
+                  Rs. <span class="text-red-500"><%= tfr|| 0 %></span>
+                </h1>
+              </div>
+              <!-- Card 1 -->
+
+              <!-- Card 2 -->
+              <div
+                class="bg-slate-100 rounded-md shadow-md border md:w-3/12 w-3/12 border-slate-100 cardback1 p-4"
+              >
+                <h1 class="text-slate-700 font-bold text-left">
+                  Donation Paid
+                </h1>
+                <h1 class="text-zinc-800 text-2xl font-bold text-left mt-2">
+                  Rs. <span class="text-red-500"><%= tdm || 0 %></span>
+                </h1>
+              </div>
+              <!-- Card 2 -->
+
+              <!-- Card 3 -->
+              <div
+                class="bg-slate-100 rounded-md shadow-md border border-slate-100 md:w-3/12 w-3/12 card3 p-4"
+              >
+                <h1 class="text-slate-700 font-bold text-left">
+                  Items <span class="text-slate-700">Received</span>
+                </h1>
+                <h1 class="text-red-500 font-bold text-2xl text-left mt-2">
+                  <span class="text-slate-800">Items: </span><%= tid || 0 %>
+                </h1>
+              </div>
+              <!-- Card 3 -->
+
+
+              <!-- Card 4 -->
+              <div
+                class="bg-slate-100 rounded-md shadow-md border border-slate-100 md:w-3/12 w-3/12 card3 p-4"
+              >
+                <h1 class="text-slate-700 font-bold text-left">
+                  Organisation <span class="text-slate-700">Registered</span>
+                </h1>
+                <h1 class="text-red-500 font-bold text-3xl text-left mt-2">
+                  <span class="text-slate-800"></span><%= toc || 0 %>
+                </h1>
+              </div>
+              <!-- Card 4 -->
+
+              <!-- Card 5 -->
+              <div
+                class="bg-slate-100 rounded-md shadow-md border border-slate-100 md:w-3/12 w-3/12 card3 p-4"
+              >
+                <h1 class="text-slate-700 font-bold text-left">
+                  Individual <span class="text-slate-700">Registered</span>
+                </h1>
+                <h1 class="text-red-500 font-bold text-3xl text-left mt-2">
+                  <span class="text-slate-800"></span><%= tic || 0 %>
+                </h1>
+              </div>
+              <!-- Card 5 -->
+            </div>
+          </div>
+          <div class="w-full h-full">
+            <!-- heading -->
+            <div class="w-full ml-10 mt-10 mb-20">
+              <h1 class="font-semibold text-slate-800">Graphs Statistics</h1>
+            </div>
+            <!-- heading -->
+            <!-- Graph-Window -->
+            <div
+              class="w-full h-fit flex flex-col gap-5 justify-center items-center">
+              
+              <div class="w-11/12 h-full flex justify-center gap-10 items-center">
+                <div class="w-4/12 h-full shadow-md bg-slate-100 border border-400 rounded-lg">
+                <canvas id="pieChart1" width="400" height="400"></canvas>
+                </div>
+                <div class="w-4/12 h-full border shadow-md bg-slate-100 border-400 rounded-lg">
+                <canvas id="barChart" width="400" height="400"></canvas>
+                </div>
+                <div class="w-4/12 h-full border shadow-md bg-slate-100 border-400 rounded-lg">
+                <canvas id="pieChart" width="400" height="400"></canvas>
+                </div>
+              </div>
+              <div class="w-full h-full flex justify-center items-center gap-10">
+                <div class="w-5/12 h-full bg-slate-100 mt-10 border border-400 rounded-lg">
+                  <canvas id="lineChart" width="fit-content" height="300"></canvas>
+                </div>
+                
+                <div class="w-5/12 h-full bg-slate-100 mt-10 border border-400 rounded-lg"> 
+                  <canvas id="barChart1" width="400" height="400"></canvas>
+                </div>
+              </div>
+            </div>
+            <!-- Graph-Window -->
+          </div>
+          <!-- Right Bottom Section -->
+        </div>
+        <!-- Main Window -->
+      </div>
+    </div>
+    <script src="/graph1.js" ></script>
+    <script src="/graph2.js" ></script>
+    <script src="/graph3.js" ></script>
+    <script src="/graph4.js" ></script>
+    <script src="/graph5.js" ></script>
+    <!-- <script src="/graph2.js"></script> -->
+  </body>
+</html>
